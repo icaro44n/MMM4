@@ -12,42 +12,63 @@
     .hover-scale:hover { transform: scale(1.05); }
   </style>
 </head>
-<body class="bg-gray-900 text-white font-sans min-h-screen flex">
-  <!-- Menu Lateral -->
-  <aside class="w-64 bg-gray-800 p-6 shadow-lg">
-    <h1 class="text-2xl font-bold mb-4">SmartMirror Health+</h1>
-    <p class="text-sm italic mb-8 text-gray-300">Veja além do reflexo</p>
-    <nav class="space-y-4">
-      <button onclick="scanSkin()" class="flex items-center w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded hover-scale">
-        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.5c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6zm0 0V3m0 15v3"></path></svg>
-        Escanear Pele
-      </button>
-      <button onclick="monitorVitals()" class="flex items-center w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded hover-scale">
-        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-        Sinais Vitais
-      </button>
-      <button onclick="guidedWorkout()" class="flex items-center w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded hover-scale">
-        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-        Treino Guiado
-      </button>
-      <button onclick="teleconsult()" class="flex items-center w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded hover-scale">
-        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-        Teleconsulta
-      </button>
-      <button onclick="generateReport()" class="flex items-center w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded hover-scale">
-        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-        Relatório Semanal
-      </button>
-    </nav>
-  </aside>
 
-  <!-- Área Principal -->
-  <main class="flex-1 p-8">
-    <div id="result" class="bg-gray-800 p-6 rounded-lg shadow-lg min-h-[400px] fade-in">
-      <h2 class="text-xl font-semibold mb-4">Bem-vindo ao SmartMirror Health+</h2>
-      <p class="text-gray-300">Clique em uma funcionalidade ao lado para começar. Veja como o SmartMirror cuida da sua saúde para o amanhã.</p>
+  <div class="w-full min-h-screen flex items-center justify-center bg-[#e7e3dd] py-10">
+    <div class="flex flex-col md:flex-row gap-16 items-start justify-center">
+      <!-- Painel principal -->
+      <div class="bg-[#232323] rounded-3xl shadow-2xl text-white w-[420px] p-8 flex flex-col gap-6">
+        <img src="REflexa.png" alt="REflexa Logo" class="w-32 mb-2">
+        <div class="text-3xl font-bold tracking-wide">10:12</div>
+        <div class="text-lg text-gray-300 mb-2">Monday</div>
+        <div class="flex items-center gap-2 text-lg mb-2">☀️ <span>23°C</span></div>
+        <div class="grid grid-cols-2 grid-rows-3 gap-4">
+          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center">
+            <div class="font-semibold mb-1">Skin Analysis</div>
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=facearea&w=256&h=256&facepad=2" alt="Skin" class="w-20 h-20 rounded-lg object-cover mb-2 bg-gray-700">
+            <div class="text-sm w-full">
+              Dryness <span class="float-right text-yellow-200">72%</span><br>
+              Pigmentation <span class="float-right text-yellow-200">59%</span><br>
+              Fine lines <span class="float-right text-yellow-200">65%</span>
+            </div>
+          </div>
+          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center">
+            <div class="font-semibold mb-1">Posture</div>
+            <div class="text-3xl mb-1">🧍‍♂️</div>
+            <div class="text-green-300 font-semibold">Good Posture</div>
+          </div>
+          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center">
+            <div class="font-semibold mb-1">Heart Rate</div>
+            <div class="text-2xl text-pink-400 mb-1">♥</div>
+            <div class="text-xl font-bold">72 <span class="text-base font-normal">bpm</span></div>
+          </div>
+          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center">
+            <div class="font-semibold mb-1">Sleep</div>
+            <div class="text-2xl text-blue-200 mb-1">🌙</div>
+            <div class="text-lg font-bold">7h 30m</div>
+            <div class="text-xs text-gray-400">Deep Sleep</div>
+          </div>
+          <div class="bg-[#292929] rounded-xl p-4 flex flex-row items-end justify-between col-span-2">
+            <div>
+              <div class="font-semibold">Guided Workout</div>
+              <div class="text-sm mt-2">Plank</div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=256&q=80" alt="Workout" class="w-24 h-16 object-cover rounded-md bg-gray-700">
+          </div>
+        </div>
+      </div>
+      <!-- Lado direito -->
+      <div class="mt-8 md:mt-20">
+        <div class="text-3xl font-bold text-[#232323] mb-6">Functionalities</div>
+        <div class="text-xl text-[#232323] leading-relaxed">
+          Skin analysis<br>
+          Vital signs monitoring<br>
+          Guided workouts<br>
+          Telemedicine integration<br>
+          Weekly reports
+        </div>
+      </div>
     </div>
-  </main>
+  </div>
 
   <script>
     // Simulação das funcionalidades do SmartMirror Health+
