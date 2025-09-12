@@ -1,104 +1,149 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SmartMirror Health+ | Demonstração</title>
+  <title>SmartMirror Health+ Pro | Demonstração Inovadora</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Adicionado para gráficos dinâmicos -->
   <style>
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     .fade-in { animation: fadeIn 0.5s ease-in; }
     .hover-scale { transition: transform 0.3s ease; }
     .hover-scale:hover { transform: scale(1.05); }
+    .glow { box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+    .ar-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); display: none; }
   </style>
 </head>
-
-  <div class="w-full min-h-screen flex items-center justify-center bg-[#e7e3dd] py-10">
+<body class="bg-gradient-to-br from-[#e7e3dd] to-[#d1c9c0] text-[#232323] font-sans antialiased">
+  <div class="w-full min-h-screen flex items-center justify-center py-10">
     <div class="flex flex-col md:flex-row gap-16 items-start justify-center">
-      <!-- Painel principal -->
-      <div class="bg-[#232323] rounded-3xl shadow-2xl text-white w-[420px] p-8 flex flex-col gap-6">
-        <img src="REflexa.png" alt="REflexa Logo" class="w-32 mb-2">
-        <div class="text-3xl font-bold tracking-wide">10:12</div>
-        <div class="text-lg text-gray-300 mb-2">Monday</div>
-        <div class="flex items-center gap-2 text-lg mb-2">☀️ <span>23°C</span></div>
-        <div class="grid grid-cols-2 grid-rows-3 gap-4">
-          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center">
-            <div class="font-semibold mb-1">Skin Analysis</div>
-            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=facearea&w=256&h=256&facepad=2" alt="Skin" class="w-20 h-20 rounded-lg object-cover mb-2 bg-gray-700">
+      <!-- Painel principal melhorado com design mais moderno e interativo -->
+      <div class="bg-[#1a1a1a] rounded-3xl shadow-2xl text-white w-[480px] p-8 flex flex-col gap-6 glow">
+        <img src="REflexa.png" alt="REflexa Logo" class="w-36 mb-2 hover-scale">
+        <div class="text-4xl font-extrabold tracking-wide">10:12</div>
+        <div class="text-xl text-gray-300 mb-2">Segunda-feira</div>
+        <div class="flex items-center gap-2 text-xl mb-2">☀️ <span>23°C</span> | São Paulo</div>
+        <div class="grid grid-cols-2 grid-rows-4 gap-4">
+          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center hover-scale">
+            <div class="font-semibold mb-1">Análise de Pele Avançada</div>
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=facearea&w=256&h=256&facepad=2" alt="Skin" class="w-24 h-24 rounded-lg object-cover mb-2 bg-gray-700">
             <div class="text-sm w-full">
-              Dryness <span class="float-right text-yellow-200">72%</span><br>
-              Pigmentation <span class="float-right text-yellow-200">59%</span><br>
-              Fine lines <span class="float-right text-yellow-200">65%</span>
+              Secura <span class="float-right text-yellow-200">72%</span><br>
+              Pigmentação <span class="float-right text-yellow-200">59%</span><br>
+              Linhas Finas <span class="float-right text-yellow-200">65%</span><br>
+              Hidratação <span class="float-right text-green-300">85%</span> <!-- Novo métrica -->
             </div>
           </div>
-          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center">
-            <div class="font-semibold mb-1">Posture</div>
-            <div class="text-3xl mb-1">🧍‍♂️</div>
-            <div class="text-green-300 font-semibold">Good Posture</div>
+          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center hover-scale">
+            <div class="font-semibold mb-1">Postura e Movimento</div>
+            <div class="text-4xl mb-1">🧍‍♂️</div>
+            <div class="text-green-300 font-semibold">Postura Ótima</div>
+            <div class="text-xs text-gray-400 mt-1">Movimento Diário: 8.500 passos</div> <!-- Inovação: Integração com contagem de passos -->
           </div>
-          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center">
-            <div class="font-semibold mb-1">Heart Rate</div>
-            <div class="text-2xl text-pink-400 mb-1">♥</div>
-            <div class="text-xl font-bold">72 <span class="text-base font-normal">bpm</span></div>
+          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center hover-scale">
+            <div class="font-semibold mb-1">Batimento Cardíaco</div>
+            <div class="text-3xl text-pink-400 mb-1">♥</div>
+            <div class="text-2xl font-bold">72 <span class="text-base font-normal">bpm</span></div>
+            <div class="text-xs text-gray-400">Variabilidade: Alta</div> <!-- Inovação: Métrica de variabilidade para estresse -->
           </div>
-          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center">
-            <div class="font-semibold mb-1">Sleep</div>
-            <div class="text-2xl text-blue-200 mb-1">🌙</div>
-            <div class="text-lg font-bold">7h 30m</div>
-            <div class="text-xs text-gray-400">Deep Sleep</div>
+          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center hover-scale">
+            <div class="font-semibold mb-1">Sono e Recuperação</div>
+            <div class="text-3xl text-blue-200 mb-1">🌙</div>
+            <div class="text-xl font-bold">7h 45m</div>
+            <div class="text-xs text-gray-400">Sono Profundo: 2h 15m | Qualidade: 92%</div> <!-- Inovação: Qualidade detalhada -->
           </div>
-          <div class="bg-[#292929] rounded-xl p-4 flex flex-row items-end justify-between col-span-2">
+          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center hover-scale">
+            <div class="font-semibold mb-1">Humor e Bem-Estar</div>
+            <div class="text-3xl text-purple-300 mb-1">😊</div>
+            <div class="text-lg font-bold">Positivo</div>
+            <div class="text-xs text-gray-400">Baseado em análise facial</div> <!-- Inovação: Detecção de humor via IA -->
+          </div>
+          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center hover-scale">
+            <div class="font-semibold mb-1">Nutrição Sugerida</div>
+            <div class="text-3xl text-orange-300 mb-1">🍎</div>
+            <div class="text-sm">Café da manhã: Aveia com frutas</div> <!-- Inovação: Sugestões personalizadas -->
+          </div>
+          <div class="bg-[#292929] rounded-xl p-4 flex flex-row items-end justify-between col-span-2 hover-scale">
             <div>
-              <div class="font-semibold">Guided Workout</div>
-              <div class="text-sm mt-2">Plank</div>
+              <div class="font-semibold">Treino Guiado com RA</div>
+              <div class="text-sm mt-2">Prancha Avançada</div>
             </div>
-            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=256&q=80" alt="Workout" class="w-24 h-16 object-cover rounded-md bg-gray-700">
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=256&q=80" alt="Workout" class="w-28 h-18 object-cover rounded-md bg-gray-700">
           </div>
         </div>
       </div>
-      <!-- Lado direito -->
-      <div class="mt-8 md:mt-20">
-        <div class="text-3xl font-bold text-[#232323] mb-6">Functionalities</div>
-        <div class="text-xl text-[#232323] leading-relaxed">
-          Skin analysis<br>
-          Vital signs monitoring<br>
-          Guided workouts<br>
-          Telemedicine integration<br>
-          Weekly reports
+      <!-- Lado direito com funcionalidades expandidas e inovadoras -->
+      <div class="mt-8 md:mt-20 max-w-md">
+        <div class="text-4xl font-extrabold text-[#232323] mb-6">Funcionalidades Inovadoras</div>
+        <div class="text-xl text-[#232323] leading-relaxed space-y-2">
+          Análise de pele com IA preditiva (previsão de envelhecimento)<br>
+          Monitoramento de sinais vitais em tempo real com alertas inteligentes<br>
+          Treinos guiados com Realidade Aumentada (RA) e correções via voz<br>
+          Integração com telemedicina e IA para diagnósticos preliminares<br>
+          Relatórios semanais com gráficos interativos e insights de ML<br>
+          Detecção de humor e sugestões de bem-estar mental<br>
+          Integração com wearables e smart home para dados holísticos<br>
+          Privacidade com criptografia blockchain para dados de saúde
         </div>
+        <!-- Botões interativos melhorados com hover effects -->
+        <div class="mt-8 flex flex-col gap-4">
+          <button onclick="scanSkin()" class="bg-[#232323] text-white py-3 px-6 rounded-full font-semibold hover:bg-[#3a3a3a] hover-scale">Escanear Pele</button>
+          <button onclick="monitorVitals()" class="bg-[#232323] text-white py-3 px-6 rounded-full font-semibold hover:bg-[#3a3a3a] hover-scale">Monitorar Sinais Vitais</button>
+          <button onclick="guidedWorkout()" class="bg-[#232323] text-white py-3 px-6 rounded-full font-semibold hover:bg-[#3a3a3a] hover-scale">Iniciar Treino Guiado</button>
+          <button onclick="teleconsult()" class="bg-[#232323] text-white py-3 px-6 rounded-full font-semibold hover:bg-[#3a3a3a] hover-scale">Teleconsulta</button>
+          <button onclick="generateReport()" class="bg-[#232323] text-white py-3 px-6 rounded-full font-semibold hover:bg-[#3a3a3a] hover-scale">Gerar Relatório</button>
+          <button onclick="analyzeMood()" class="bg-[#232323] text-white py-3 px-6 rounded-full font-semibold hover:bg-[#3a3a3a] hover-scale">Analisar Humor</button> <!-- Novo botão -->
+        </div>
+        <!-- Área de resultados com overlay de RA simulada -->
+        <div id="result" class="mt-8 bg-white p-6 rounded-xl shadow-lg min-h-[200px] fade-in"></div>
+        <div id="ar-overlay" class="ar-overlay flex items-center justify-center text-white text-2xl font-bold">Correção RA: Endireite os ombros!</div>
       </div>
     </div>
   </div>
 
   <script>
-    // Simulação das funcionalidades do SmartMirror Health+
+    // Simulação aprimorada com inovações: Dados persistentes, gráficos, RA simulada, análise de humor, insights de ML
     const resultsDiv = document.getElementById('result');
-    let healthData = [];
+    const arOverlay = document.getElementById('ar-overlay');
+    let healthData = JSON.parse(localStorage.getItem('healthData')) || []; // Persistência de dados via localStorage
+    let chartInstance = null; // Para gráficos
 
     function showLoading() {
-      resultsDiv.innerHTML = '<p class="text-gray-300">Processando...</p>';
+      resultsDiv.innerHTML = '<p class="text-gray-500 font-medium">Processando com IA...</p>';
       resultsDiv.classList.add('fade-in');
+    }
+
+    function showARCorrection(message) {
+      arOverlay.innerText = message;
+      arOverlay.style.display = 'flex';
+      setTimeout(() => { arOverlay.style.display = 'none'; }, 3000);
     }
 
     function scanSkin() {
       showLoading();
       setTimeout(() => {
-        const conditions = ['seca', 'oleosa', 'acneica', 'sensível'];
+        const conditions = ['seca', 'oleosa', 'acneica', 'sensível', 'mista'];
         const detected = conditions[Math.floor(Math.random() * conditions.length)];
+        const agingPrediction = Math.floor(Math.random() * (10 - 3 + 1)) + 3; // Inovação: Previsão de envelhecimento
         const recommendations = {
-          'seca': 'Hidratante intensivo e sérum com ácido hialurônico.',
-          'oleosa': 'Gel de limpeza e produtos matificantes.',
-          'acneica': 'Tratamento com ácido salicílico; consulte dermatologista.',
-          'sensível': 'Produtos suaves sem fragrância; teste patch.'
+          'seca': 'Hidratante intensivo, sérum com ácido hialurônico e previsão de melhora em 2 semanas.',
+          'oleosa': 'Gel de limpeza, produtos matificantes e máscara de argila semanal.',
+          'acneica': 'Tratamento com ácido salicílico; consulte dermatologista para cicatrizes.',
+          'sensível': 'Produtos suaves sem fragrância; teste patch e evite sol direto.',
+          'mista': 'Zonas específicas: hidratante na seca, matificante na oleosa.'
         };
         const result = `
-          <h2 class="text-xl font-semibold mb-4">Análise de Pele</h2>
+          <h2 class="text-2xl font-bold mb-4">Análise de Pele com IA</h2>
           <p><strong>Condição detectada:</strong> ${detected}</p>
-          <p><strong>Recomendação:</strong> ${recommendations[detected]}</p>
+          <p><strong>Previsão de envelhecimento:</strong> Reduzível em ${agingPrediction} anos com cuidados.</p>
+          <p><strong>Recomendação personalizada:</strong> ${recommendations[detected]}</p>
         `;
-        healthData.push({ type: 'skin_scan', result: `Condição: ${detected}. Recomendação: ${recommendations[detected]}` });
+        healthData.push({ type: 'skin_scan', result: `Condição: ${detected}. Previsão: ${agingPrediction} anos. Recomendação: ${recommendations[detected]}` });
+        saveData();
         resultsDiv.innerHTML = result;
-      }, 1000);
+      }, 1500); // Tempo de processamento aumentado para simular IA
     }
 
     function monitorVitals() {
@@ -108,51 +153,88 @@
         const bloodPressure = `${Math.floor(Math.random() * (140 - 90 + 1)) + 90}/${Math.floor(Math.random() * (90 - 60 + 1)) + 60}`;
         const sleepHours = (Math.random() * (9 - 5) + 5).toFixed(1);
         const respirationRate = Math.floor(Math.random() * (20 - 12 + 1)) + 12;
+        const stressLevel = ['Baixo', 'Médio', 'Alto'][Math.floor(Math.random() * 3)]; // Inovação: Nível de estresse
         const result = `
-          <h2 class="text-xl font-semibold mb-4">Sinais Vitais</h2>
+          <h2 class="text-2xl font-bold mb-4">Sinais Vitais em Tempo Real</h2>
           <p><strong>Batimento cardíaco:</strong> ${heartRate} bpm</p>
           <p><strong>Pressão arterial:</strong> ${bloodPressure} mmHg</p>
           <p><strong>Horas de sono:</strong> ${sleepHours} h</p>
           <p><strong>Taxa respiratória:</strong> ${respirationRate}/min</p>
+          <p><strong>Nível de estresse:</strong> ${stressLevel} (baseado em variabilidade)</p>
         `;
-        healthData.push({ type: 'vitals', heartRate, bloodPressure, sleepHours, respirationRate });
+        if (stressLevel === 'Alto') alert('Alerta: Nível de estresse alto detectado! Considere meditação.'); // Inovação: Alertas inteligentes
+        healthData.push({ type: 'vitals', heartRate, bloodPressure, sleepHours, respirationRate, stressLevel });
+        saveData();
         resultsDiv.innerHTML = result;
-      }, 1000);
+      }, 1500);
     }
 
     function guidedWorkout() {
       showLoading();
       setTimeout(() => {
+        const workouts = ['Pilates', 'Yoga', 'HIIT', 'Alongamento'];
+        const selected = workouts[Math.floor(Math.random() * workouts.length)];
         const corrections = [
           'Corrija a postura: endireite as costas.',
           'Projeção RA: Siga o guia virtual para alongamento.',
-          'Dica: Mantenha a respiração constante.'
+          'Dica: Mantenha a respiração constante e sincronize com movimentos.'
         ];
+        const correction = corrections[Math.floor(Math.random() * corrections.length)];
+        showARCorrection(correction); // Inovação: Simulação de RA
         const result = `
-          <h2 class="text-xl font-semibold mb-4">Treino Guiado</h2>
-          <p><strong>Treino:</strong> Pilates</p>
-          <p><strong>Correção RA:</strong> ${corrections[Math.floor(Math.random() * corrections.length)]}</p>
+          <h2 class="text-2xl font-bold mb-4">Treino Guiado com RA</h2>
+          <p><strong>Treino selecionado:</strong> ${selected}</p>
+          <p><strong>Correção em tempo real:</strong> ${correction}</p>
+          <p><strong>Duração sugerida:</strong> 20 minutos | Calorias estimadas: 250</p>
         `;
-        healthData.push({ type: 'workout', result: `Treino de pilates. Correção: ${corrections[Math.floor(Math.random() * corrections.length)]}` });
+        healthData.push({ type: 'workout', result: `Treino: ${selected}. Correção: ${correction}` });
+        saveData();
         resultsDiv.innerHTML = result;
-      }, 1000);
+      }, 1500);
     }
 
     function teleconsult() {
       showLoading();
       setTimeout(() => {
+        const topics = ['Check-up geral', 'Dermatologia', 'Nutrição', 'Bem-estar mental'];
+        const selected = topics[Math.floor(Math.random() * topics.length)];
         const responses = [
-          'Conectando ao médico... Recomendação: Mantenha rotina de exercícios.',
-          'Consulta virtual: Seus dados indicam bom equilíbrio; monitore sono.'
+          'Conectando ao médico... Recomendação: Mantenha rotina de exercícios e hidratação.',
+          'Consulta virtual: Seus dados indicam bom equilíbrio; monitore sono e adicione vegetais.',
+          'IA preliminar: Nenhum sinal de alerta; sugiro check-up anual.'
         ];
+        const response = responses[Math.floor(Math.random() * responses.length)];
         const result = `
-          <h2 class="text-xl font-semibold mb-4">Teleconsulta</h2>
-          <p><strong>Assunto:</strong> Check-up geral</p>
-          <p><strong>Resposta:</strong> ${responses[Math.floor(Math.random() * responses.length)]}</p>
+          <h2 class="text-2xl font-bold mb-4">Teleconsulta com IA</h2>
+          <p><strong>Assunto:</strong> ${selected}</p>
+          <p><strong>Resposta do especialista:</strong> ${response}</p>
         `;
-        healthData.push({ type: 'teleconsult', result: `Consulta: ${responses[Math.floor(Math.random() * responses.length)]}` });
+        healthData.push({ type: 'teleconsult', result: `Consulta: ${selected}. Resposta: ${response}` });
+        saveData();
         resultsDiv.innerHTML = result;
-      }, 1000);
+      }, 1500);
+    }
+
+    function analyzeMood() {
+      showLoading();
+      setTimeout(() => {
+        const moods = ['Positivo', 'Neutro', 'Estressado', 'Cansado'];
+        const detected = moods[Math.floor(Math.random() * moods.length)];
+        const suggestions = {
+          'Positivo': 'Ótimo! Mantenha o ritmo com atividades leves.',
+          'Neutro': 'Equilibrado. Experimente meditação para elevar o humor.',
+          'Estressado': 'Respire fundo. Sugestão: 10 min de mindfulness.',
+          'Cansado': 'Descanse. Beba água e evite telas à noite.'
+        };
+        const result = `
+          <h2 class="text-2xl font-bold mb-4">Análise de Humor com IA</h2>
+          <p><strong>Humor detectado:</strong> ${detected}</p>
+          <p><strong>Sugestão personalizada:</strong> ${suggestions[detected]}</p>
+        `;
+        healthData.push({ type: 'mood', result: `Humor: ${detected}. Sugestão: ${suggestions[detected]}` });
+        saveData();
+        resultsDiv.innerHTML = result;
+      }, 1500);
     }
 
     function generateReport() {
@@ -160,24 +242,55 @@
       setTimeout(() => {
         if (healthData.length === 0) {
           resultsDiv.innerHTML = `
-            <h2 class="text-xl font-semibold mb-4">Relatório Semanal</h2>
-            <p>Nenhum dado disponível para relatório.</p>
+            <h2 class="text-2xl font-bold mb-4">Relatório Semanal Inteligente</h2>
+            <p>Nenhum dado disponível. Inicie análises para gerar insights.</p>
           `;
           return;
         }
-        const skinScans = healthData.filter(d => d.type === 'skin_scan').map(d => d.result);
+        const skinScans = healthData.filter(d => d.type === 'skin_scan').length;
         const vitalsCount = healthData.filter(d => d.type === 'vitals').length;
+        const workoutsCount = healthData.filter(d => d.type === 'workout').length;
+        const moods = healthData.filter(d => d.type === 'mood').map(d => d.result.split(': ')[1].split('.')[0]);
+        const moodTrend = moods.length > 0 ? moods[moods.length - 1] : 'N/A';
+
+        // Inovação: Gráfico de batimentos cardíacos (se dados existirem)
+        const heartRates = healthData.filter(d => d.type === 'vitals').map(d => d.heartRate);
+        let chartHtml = '';
+        if (heartRates.length > 0) {
+          chartHtml = `<canvas id="heartRateChart" class="mt-4"></canvas>`;
+        }
+
         let report = `
-          <h2 class="text-xl font-semibold mb-4">Relatório Semanal</h2>
+          <h2 class="text-2xl font-bold mb-4">Relatório Semanal Inteligente</h2>
           <p><strong>Usuário:</strong> Exemplo</p>
-          <p><strong>Escaneamentos de pele:</strong> ${skinScans.length}</p>
+          <p><strong>Escaneamentos de pele:</strong> ${skinScans}</p>
+          <p><strong>Monitoramentos vitais:</strong> ${vitalsCount}</p>
+          <p><strong>Treinos realizados:</strong> ${workoutsCount}</p>
+          <p><strong>Tendência de humor:</strong> ${moodTrend}</p>
+          <p><strong>Insights de ML:</strong> Sua saúde geral melhorou 15% nesta semana. Foque em hidratação e sono para otimizar.</p>
+          ${chartHtml}
         `;
-        if (skinScans.length > 0) report += `<p><strong>Último escaneamento:</strong> ${skinScans[skinScans.length - 1]}</p>`;
-        report += `<p><strong>Monitoramentos vitais:</strong> ${vitalsCount}</p>`;
-        report += `<p><strong>Dica personalizada:</strong> Foque em hidratação e mantenha rotina de treinos.</p>`;
         resultsDiv.innerHTML = report;
-      }, 1000);
+
+        if (heartRates.length > 0) {
+          const ctx = document.getElementById('heartRateChart').getContext('2d');
+          if (chartInstance) chartInstance.destroy();
+          chartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: heartRates.map((_, i) => `Medição ${i+1}`),
+              datasets: [{ label: 'Batimento Cardíaco (bpm)', data: heartRates, borderColor: '#ff6384', tension: 0.1 }]
+            },
+            options: { scales: { y: { beginAtZero: false } } }
+          });
+        }
+      }, 1500);
+    }
+
+    function saveData() {
+      localStorage.setItem('healthData', JSON.stringify(healthData));
     }
   </script>
 </body>
 </html>
+```
