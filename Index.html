@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartMirror Health+ | Demonstração</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .fade-in { animation: fadeIn 0.5s ease-in; }
+    .hover-scale { transition: transform 0.3s ease; }
+    .hover-scale:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans min-h-screen flex">
+  <!-- Menu Lateral -->
+  <aside class="w-64 bg-gray-800 p-6 shadow-lg">
+    <h1 class="text-2xl font-bold mb-4">SmartMirror Health+</h1>
+    <p class="text-sm italic mb-8 text-gray-300">Veja além do reflexo</p>
+    <nav class="space-y-4">
+      <button onclick="scanSkin()" class="flex items-center w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded hover-scale">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.5c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6zm0 0V3m0 15v3"></path></svg>
+        Escanear Pele
+      </button>
+      <button onclick="monitorVitals()" class="flex items-center w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded hover-scale">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+        Sinais Vitais
+      </button>
+      <button onclick="guidedWorkout()" class="flex items-center w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded hover-scale">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        Treino Guiado
+      </button>
+      <button onclick="teleconsult()" class="flex items-center w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded hover-scale">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+        Teleconsulta
+      </button>
+      <button onclick="generateReport()" class="flex items-center w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded hover-scale">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+        Relatório Semanal
+      </button>
+    </nav>
+  </aside>
+
+  <!-- Área Principal -->
+  <main class="flex-1 p-8">
+    <div id="result" class="bg-gray-800 p-6 rounded-lg shadow-lg min-h-[400px] fade-in">
+      <h2 class="text-xl font-semibold mb-4">Bem-vindo ao SmartMirror Health+</h2>
+      <p class="text-gray-300">Clique em uma funcionalidade ao lado para começar. Veja como o SmartMirror cuida da sua saúde para o amanhã.</p>
+    </div>
+  </main>
+
+  <script>
+    // Simulação das funcionalidades do SmartMirror Health+
+    const resultsDiv = document.getElementById('result');
+    let healthData = [];
+
+    function showLoading() {
+      resultsDiv.innerHTML = '<p class="text-gray-300">Processando...</p>';
+      resultsDiv.classList.add('fade-in');
+    }
+
+    function scanSkin() {
+      showLoading();
+      setTimeout(() => {
+        const conditions = ['seca', 'oleosa', 'acneica', 'sensível'];
+        const detected = conditions[Math.floor(Math.random() * conditions.length)];
+        const recommendations = {
+          'seca': 'Hidratante intensivo e sérum com ácido hialurônico.',
+          'oleosa': 'Gel de limpeza e produtos matificantes.',
+          'acneica': 'Tratamento com ácido salicílico; consulte dermatologista.',
+          'sensível': 'Produtos suaves sem fragrância; teste patch.'
+        };
+        const result = `
+          <h2 class="text-xl font-semibold mb-4">Análise de Pele</h2>
+          <p><strong>Condição detectada:</strong> ${detected}</p>
+          <p><strong>Recomendação:</strong> ${recommendations[detected]}</p>
+        `;
+        healthData.push({ type: 'skin_scan', result: `Condição: ${detected}. Recomendação: ${recommendations[detected]}` });
+        resultsDiv.innerHTML = result;
+      }, 1000);
+    }
+
+    function monitorVitals() {
+      showLoading();
+      setTimeout(() => {
+        const heartRate = Math.floor(Math.random() * (100 - 60 + 1)) + 60;
+        const bloodPressure = `${Math.floor(Math.random() * (140 - 90 + 1)) + 90}/${Math.floor(Math.random() * (90 - 60 + 1)) + 60}`;
+        const sleepHours = (Math.random() * (9 - 5) + 5).toFixed(1);
+        const respirationRate = Math.floor(Math.random() * (20 - 12 + 1)) + 12;
+        const result = `
+          <h2 class="text-xl font-semibold mb-4">Sinais Vitais</h2>
+          <p><strong>Batimento cardíaco:</strong> ${heartRate} bpm</p>
+          <p><strong>Pressão arterial:</strong> ${bloodPressure} mmHg</p>
+          <p><strong>Horas de sono:</strong> ${sleepHours} h</p>
+          <p><strong>Taxa respiratória:</strong> ${respirationRate}/min</p>
+        `;
+        healthData.push({ type: 'vitals', heartRate, bloodPressure, sleepHours, respirationRate });
+        resultsDiv.innerHTML = result;
+      }, 1000);
+    }
+
+    function guidedWorkout() {
+      showLoading();
+      setTimeout(() => {
+        const corrections = [
+          'Corrija a postura: endireite as costas.',
+          'Projeção RA: Siga o guia virtual para alongamento.',
+          'Dica: Mantenha a respiração constante.'
+        ];
+        const result = `
+          <h2 class="text-xl font-semibold mb-4">Treino Guiado</h2>
+          <p><strong>Treino:</strong> Pilates</p>
+          <p><strong>Correção RA:</strong> ${corrections[Math.floor(Math.random() * corrections.length)]}</p>
+        `;
+        healthData.push({ type: 'workout', result: `Treino de pilates. Correção: ${corrections[Math.floor(Math.random() * corrections.length)]}` });
+        resultsDiv.innerHTML = result;
+      }, 1000);
+    }
+
+    function teleconsult() {
+      showLoading();
+      setTimeout(() => {
+        const responses = [
+          'Conectando ao médico... Recomendação: Mantenha rotina de exercícios.',
+          'Consulta virtual: Seus dados indicam bom equilíbrio; monitore sono.'
+        ];
+        const result = `
+          <h2 class="text-xl font-semibold mb-4">Teleconsulta</h2>
+          <p><strong>Assunto:</strong> Check-up geral</p>
+          <p><strong>Resposta:</strong> ${responses[Math.floor(Math.random() * responses.length)]}</p>
+        `;
+        healthData.push({ type: 'teleconsult', result: `Consulta: ${responses[Math.floor(Math.random() * responses.length)]}` });
+        resultsDiv.innerHTML = result;
+      }, 1000);
+    }
+
+    function generateReport() {
+      showLoading();
+      setTimeout(() => {
+        if (healthData.length === 0) {
+          resultsDiv.innerHTML = `
+            <h2 class="text-xl font-semibold mb-4">Relatório Semanal</h2>
+            <p>Nenhum dado disponível para relatório.</p>
+          `;
+          return;
+        }
+        const skinScans = healthData.filter(d => d.type === 'skin_scan').map(d => d.result);
+        const vitalsCount = healthData.filter(d => d.type === 'vitals').length;
+        let report = `
+          <h2 class="text-xl font-semibold mb-4">Relatório Semanal</h2>
+          <p><strong>Usuário:</strong> Exemplo</p>
+          <p><strong>Escaneamentos de pele:</strong> ${skinScans.length}</p>
+        `;
+        if (skinScans.length > 0) report += `<p><strong>Último escaneamento:</strong> ${skinScans[skinScans.length - 1]}</p>`;
+        report += `<p><strong>Monitoramentos vitais:</strong> ${vitalsCount}</p>`;
+        report += `<p><strong>Dica personalizada:</strong> Foque em hidratação e mantenha rotina de treinos.</p>`;
+        resultsDiv.innerHTML = report;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
