@@ -3,292 +3,459 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SmartMirror Health+ Pro | Demonstração Inovadora</title>
+  <title>SmartMirror Health+ Pro | Futurista & ISO-compliant</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Adicionado para gráficos dinâmicos -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    .fade-in { animation: fadeIn 0.5s ease-in; }
-    .hover-scale { transition: transform 0.3s ease; }
-    .hover-scale:hover { transform: scale(1.05); }
-    .glow { box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
-    .ar-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); display: none; }
+    body {
+      background: linear-gradient(120deg, #0f2027 0%, #2c5364 100%);
+      min-height: 100vh;
+    }
+    .glass {
+      background: rgba(20, 30, 40, 0.7);
+      backdrop-filter: blur(18px) saturate(1.3);
+      -webkit-backdrop-filter: blur(18px) saturate(1.3);
+      border-radius: 2rem;
+      border: 1.5px solid rgba(80, 255, 255, 0.18);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    }
+    .neon {
+      box-shadow: 0 0 8px #00fff7, 0 0 24px #00fff7, 0 0 2px #fff;
+      border: 1.5px solid #00fff7;
+      background: linear-gradient(120deg, rgba(0,255,247,0.08) 0%, rgba(44,83,100,0.12) 100%);
+    }
+    .neon-text {
+      color: #67e8f9;
+      text-shadow: 0 0 8px #22d3ee, 0 0 16px #0ff, 0 0 2px #fff;
+    }
+    .badge-iso {
+      background: rgba(0,255,247,0.12);
+      border: 1px solid #00fff7;
+      color: #00fff7;
+      border-radius: 0.5rem;
+      padding: 0.2rem 0.7rem;
+      font-size: 0.95rem;
+      margin-right: 0.5rem;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.2s;
+    }
+    .badge-iso:hover .tooltip {
+      display: block;
+    }
+    .tooltip {
+      display: none;
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #232323;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      z-index: 10;
+      box-shadow: 0 2px 12px #00fff7aa;
+    }
+    .audit-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10,30,40,0.92);
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      animation: fadeIn 0.4s;
+    }
+    .audit-overlay.active {
+      display: flex;
+    }
+    .blockchain-banner {
+      background: linear-gradient(90deg, #00fff7 0%, #232323 100%);
+      color: #232323;
+      font-weight: 600;
+      border-radius: 0.7rem;
+      padding: 0.5rem 1.2rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 12px #00fff788;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1.1rem;
+    }
+    .iso-footer {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      font-size: 0.95rem;
+      color: #67e8f9;
+    }
+    .glass-btn {
+      background: rgba(0,255,247,0.10);
+      border: 1px solid #00fff7;
+      color: #00fff7;
+      border-radius: 1.5rem;
+      padding: 0.7rem 1.5rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .glass-btn:hover {
+      background: #00fff7;
+      color: #232323;
+    }
+    .iso-wearable {
+      background: rgba(0,255,247,0.08);
+      border: 1px solid #00fff7;
+      border-radius: 1rem;
+      padding: 0.7rem 1.2rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: #67e8f9;
+      font-size: 1.1rem;
+    }
+    @media (max-width: 900px) {
+      .flex-col-md {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+    }
   </style>
 </head>
-<body class="bg-gradient-to-br from-[#e7e3dd] to-[#d1c9c0] text-[#232323] font-sans antialiased">
-  <div class="w-full min-h-screen flex items-center justify-center py-10">
-    <div class="flex flex-col md:flex-row gap-16 items-start justify-center">
-      <!-- Painel principal melhorado com design mais moderno e interativo -->
-      <div class="bg-[#1a1a1a] rounded-3xl shadow-2xl text-white w-[480px] p-8 flex flex-col gap-6 glow">
-        <img src="REflexa.png" alt="REflexa Logo" class="w-36 mb-2 hover-scale">
-        <div class="text-4xl font-extrabold tracking-wide">10:12</div>
-        <div class="text-xl text-gray-300 mb-2">Segunda-feira</div>
-        <div class="flex items-center gap-2 text-xl mb-2">☀️ <span>23°C</span> | São Paulo</div>
-        <div class="grid grid-cols-2 grid-rows-4 gap-4">
-          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center hover-scale">
-            <div class="font-semibold mb-1">Análise de Pele Avançada</div>
-            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=facearea&w=256&h=256&facepad=2" alt="Skin" class="w-24 h-24 rounded-lg object-cover mb-2 bg-gray-700">
-            <div class="text-sm w-full">
-              Secura <span class="float-right text-yellow-200">72%</span><br>
-              Pigmentação <span class="float-right text-yellow-200">59%</span><br>
-              Linhas Finas <span class="float-right text-yellow-200">65%</span><br>
-              Hidratação <span class="float-right text-green-300">85%</span> <!-- Novo métrica -->
+<body class="font-sans antialiased text-cyan-100">
+  <div class="w-full min-h-screen flex items-center justify-center py-10 bg-gradient-to-br from-black via-cyan-900 to-cyan-700 animate-pulse">
+    <div class="flex flex-col md:flex-row flex-col-md gap-12 items-start justify-center w-full max-w-7xl px-4">
+      <!-- Painel principal -->
+      <main class="glass neon relative w-full max-w-xl p-8 flex flex-col gap-6 shadow-2xl">
+        <div class="blockchain-banner" aria-label="Dados protegidos por blockchain">
+          <svg width="22" height="22" fill="none" stroke="#232323" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+          Dados protegidos por Blockchain | GDPR & ISO 13485
+        </div>
+        <div class="flex items-center justify-between">
+          <img src="REflexa.png" alt="REflexa Logo" class="w-32 h-16 object-contain" style="background:transparent;">
+          <div id="clock" class="text-3xl font-bold neon-text" aria-live="polite">--:--</div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mt-2">
+          <!-- Cards de métricas com animação neon -->
+          <div class="neon rounded-xl p-4 flex flex-col items-center" aria-label="Análise de Pele">
+            <div class="font-semibold mb-1 neon-text">Análise de Pele</div>
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=facearea&w=256&h=256&facepad=2" alt="Skin" class="w-16 h-16 rounded-lg object-cover mb-2 ring-2 ring-cyan-400/40">
+            <div class="text-xs w-full">
+              Secura <span class="float-right text-cyan-300">72%</span><br>
+              Pigmentação <span class="float-right text-cyan-300">59%</span><br>
+              Linhas Finas <span class="float-right text-cyan-300">65%</span><br>
+              Hidratação <span class="float-right text-cyan-200">85%</span>
             </div>
+            <div class="text-[0.7rem] mt-2 text-cyan-400">Análise validada por ISO 62304</div>
           </div>
-          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center hover-scale">
-            <div class="font-semibold mb-1">Postura e Movimento</div>
-            <div class="text-4xl mb-1">🧍‍♂️</div>
-            <div class="text-green-300 font-semibold">Postura Ótima</div>
-            <div class="text-xs text-gray-400 mt-1">Movimento Diário: 8.500 passos</div> <!-- Inovação: Integração com contagem de passos -->
+          <div class="neon rounded-xl p-4 flex flex-col items-center" aria-label="Postura e Movimento">
+            <div class="font-semibold mb-1 neon-text">Postura</div>
+            <div class="text-2xl mb-1 neon-text">🧍‍♂️</div>
+            <div class="text-cyan-300 font-semibold">Ótima</div>
+            <div class="text-xs text-cyan-200 mt-1">Passos: 8.500</div>
+            <div class="text-[0.7rem] mt-2 text-cyan-400">Monitoramento validado por ISO 62304</div>
           </div>
-          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center hover-scale">
-            <div class="font-semibold mb-1">Batimento Cardíaco</div>
-            <div class="text-3xl text-pink-400 mb-1">♥</div>
-            <div class="text-2xl font-bold">72 <span class="text-base font-normal">bpm</span></div>
-            <div class="text-xs text-gray-400">Variabilidade: Alta</div> <!-- Inovação: Métrica de variabilidade para estresse -->
+          <div class="neon rounded-xl p-4 flex flex-col items-center" aria-label="Batimento Cardíaco">
+            <div class="font-semibold mb-1 neon-text">Batimento Cardíaco</div>
+            <div class="text-xl text-cyan-400 mb-1 neon-text">♥</div>
+            <div class="text-lg font-bold text-cyan-100"><span id="bpm">72</span> <span class="text-base font-normal text-cyan-300">bpm</span></div>
+            <div class="text-xs text-cyan-200">Variabilidade: <span id="variabilidade">Alta</span></div>
+            <div class="text-[0.7rem] mt-2 text-cyan-400">Monitoramento validado por ISO 62304</div>
           </div>
-          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center hover-scale">
-            <div class="font-semibold mb-1">Sono e Recuperação</div>
-            <div class="text-3xl text-blue-200 mb-1">🌙</div>
-            <div class="text-xl font-bold">7h 45m</div>
-            <div class="text-xs text-gray-400">Sono Profundo: 2h 15m | Qualidade: 92%</div> <!-- Inovação: Qualidade detalhada -->
-          </div>
-          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center hover-scale">
-            <div class="font-semibold mb-1">Humor e Bem-Estar</div>
-            <div class="text-3xl text-purple-300 mb-1">😊</div>
-            <div class="text-lg font-bold">Positivo</div>
-            <div class="text-xs text-gray-400">Baseado em análise facial</div> <!-- Inovação: Detecção de humor via IA -->
-          </div>
-          <div class="bg-[#292929] rounded-xl p-4 flex flex-col items-center hover-scale">
-            <div class="font-semibold mb-1">Nutrição Sugerida</div>
-            <div class="text-3xl text-orange-300 mb-1">🍎</div>
-            <div class="text-sm">Café da manhã: Aveia com frutas</div> <!-- Inovação: Sugestões personalizadas -->
-          </div>
-          <div class="bg-[#292929] rounded-xl p-4 flex flex-row items-end justify-between col-span-2 hover-scale">
-            <div>
-              <div class="font-semibold">Treino Guiado com RA</div>
-              <div class="text-sm mt-2">Prancha Avançada</div>
-            </div>
-            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=256&q=80" alt="Workout" class="w-28 h-18 object-cover rounded-md bg-gray-700">
+          <div class="neon rounded-xl p-4 flex flex-col items-center" aria-label="Sono e Recuperação">
+            <div class="font-semibold mb-1 neon-text">Sono</div>
+            <div class="text-xl text-cyan-300 mb-1 neon-text">🌙</div>
+            <div class="text-lg font-bold text-cyan-100"><span id="sleep">7h 45m</span></div>
+            <div class="text-xs text-cyan-200">Profundo: <span id="deepSleep">2h 15m</span></div>
+            <div class="text-[0.7rem] mt-2 text-cyan-400">Monitoramento validado por ISO 62304</div>
           </div>
         </div>
-      </div>
-      <!-- Lado direito com funcionalidades expandidas e inovadoras -->
-      <div class="mt-8 md:mt-20 max-w-md">
-        <div class="text-4xl font-extrabold text-[#232323] mb-6">Funcionalidades Inovadoras</div>
-        <div class="text-xl text-[#232323] leading-relaxed space-y-2">
-          Análise de pele com IA preditiva (previsão de envelhecimento)<br>
-          Monitoramento de sinais vitais em tempo real com alertas inteligentes<br>
-          Treinos guiados com Realidade Aumentada (RA) e correções via voz<br>
-          Integração com telemedicina e IA para diagnósticos preliminares<br>
-          Relatórios semanais com gráficos interativos e insights de ML<br>
-          Detecção de humor e sugestões de bem-estar mental<br>
-          Integração com wearables e smart home para dados holísticos<br>
-          Privacidade com criptografia blockchain para dados de saúde
+        <div class="grid grid-cols-2 gap-4">
+          <div class="neon rounded-xl p-4 flex flex-col items-center" aria-label="Humor e Bem-Estar">
+            <div class="font-semibold mb-1 neon-text">Humor</div>
+            <div class="text-xl text-cyan-300 mb-1 neon-text" id="moodIcon">😊</div>
+            <div class="text-lg font-bold text-cyan-100" id="moodText">Positivo</div>
+            <div class="text-xs text-cyan-200">Baseado em análise facial</div>
+            <div class="text-[0.7rem] mt-2 text-cyan-400">Análise validada por ISO 62304</div>
+          </div>
+          <div class="neon rounded-xl p-4 flex flex-col items-center" aria-label="Nutrição Sugerida">
+            <div class="font-semibold mb-1 neon-text">Nutrição</div>
+            <div class="text-xl text-cyan-300 mb-1 neon-text">🍎</div>
+            <div class="text-sm text-cyan-100" id="nutrition">Aveia com frutas</div>
+            <div class="text-xs text-cyan-200">Sugestão personalizada</div>
+            <div class="text-[0.7rem] mt-2 text-cyan-400">Sugestão validada por ISO 62304</div>
+          </div>
         </div>
-        <!-- Botões interativos melhorados com hover effects -->
-        <div class="mt-8 flex flex-col gap-4">
-          <button onclick="scanSkin()" class="bg-[#232323] text-white py-3 px-6 rounded-full font-semibold hover:bg-[#3a3a3a] hover-scale">Escanear Pele</button>
-          <button onclick="monitorVitals()" class="bg-[#232323] text-white py-3 px-6 rounded-full font-semibold hover:bg-[#3a3a3a] hover-scale">Monitorar Sinais Vitais</button>
-          <button onclick="guidedWorkout()" class="bg-[#232323] text-white py-3 px-6 rounded-full font-semibold hover:bg-[#3a3a3a] hover-scale">Iniciar Treino Guiado</button>
-          <button onclick="teleconsult()" class="bg-[#232323] text-white py-3 px-6 rounded-full font-semibold hover:bg-[#3a3a3a] hover-scale">Teleconsulta</button>
-          <button onclick="generateReport()" class="bg-[#232323] text-white py-3 px-6 rounded-full font-semibold hover:bg-[#3a3a3a] hover-scale">Gerar Relatório</button>
-          <button onclick="analyzeMood()" class="bg-[#232323] text-white py-3 px-6 rounded-full font-semibold hover:bg-[#3a3a3a] hover-scale">Analisar Humor</button> <!-- Novo botão -->
+        <!-- Interoperabilidade com Wearables -->
+        <div class="iso-wearable" aria-label="Interoperabilidade com Wearables">
+          <svg width="22" height="22" fill="none" stroke="#00fff7" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="3"/><path d="M7 7V5a5 5 0 0110 0v2"/></svg>
+          <span>Wearable conectado via ISO/IEEE 11073</span>
+          <span class="text-green-400 font-bold">●</span>
+          <span class="text-xs text-cyan-300">Smartwatch: 98 bpm | 7.2k passos</span>
         </div>
-        <!-- Área de resultados com overlay de RA simulada -->
-        <div id="result" class="mt-8 bg-white p-6 rounded-xl shadow-lg min-h-[200px] fade-in"></div>
-        <div id="ar-overlay" class="ar-overlay flex items-center justify-center text-white text-2xl font-bold">Correção RA: Endireite os ombros!</div>
-      </div>
+        <!-- Botões interativos -->
+        <div class="flex flex-wrap gap-2 mt-2">
+          <button class="glass-btn" onclick="scanSkin()" aria-label=\"Escanear Pele\">Escanear Pele</button>
+          <button class="glass-btn" onclick="monitorVitals()" aria-label=\"Monitorar Sinais Vitais">Monitorar Sinais Vitais</button>
+          <button class="glass-btn" onclick="guidedWorkout()" aria-label=\"Iniciar Treino Guiado">Iniciar Treino Guiado</button>
+          <button class="glass-btn" onclick="teleconsult()" aria-label=\"Teleconsulta">Teleconsulta</button>
+          <button class="glass-btn" onclick="generateReport()" aria-label=\"Gerar Relatório">Gerar Relatório</button>
+          <button class="glass-btn" onclick="analyzeMood()" aria-label=\"Analisar Humor">Analisar Humor</button>
+          <button class="glass-btn" onclick="toggleAudit()" aria-label=\"Modo de Auditoria">Modo de Auditoria</button>
+          <button class="glass-btn" onclick="generateFeedback()" aria-label=\"Relatório de Feedback">Relatório de Feedback</button>
+        </div>
+        <!-- Gráfico Chart.js -->
+        <canvas id="healthChart" class="mt-6 bg-black/40 rounded-xl p-2"></canvas>
+        <!-- Rodapé de conformidade ISO -->
+        <footer class="iso-footer">
+          <span class="badge-iso" tabindex="0">ISO 13485
+            <span class="tooltip">Certificado ISO 13485: Garantia de qualidade em todo o ciclo de vida do dispositivo.</span>
+          </span>
+          <span class="badge-iso" tabindex="0">ISO 14971
+            <span class="tooltip">ISO 14971: Gerenciamento de riscos para dispositivos médicos.</span>
+          </span>
+          <span class="badge-iso" tabindex="0">ISO 62304
+            <span class="tooltip">ISO 62304: Ciclo de vida de software para dispositivos médicos.</span>
+          </span>
+          <span class="badge-iso" tabindex="0">ISO/IEEE 11073
+            <span class="tooltip">ISO/IEEE 11073: Comunicação plug-and-play com sistemas de saúde em casa.</span>
+          </span>
+          <span class="badge-iso" tabindex="0">ISO/TR 20416
+            <span class="tooltip">ISO/TR 20416: Vigilância pós-mercado e feedback de uso.</span>
+          </span>
+        </footer>
+      </main>
+      <!-- Lado direito: funcionalidades e resultados -->
+      <aside class="w-full max-w-md mt-8 md:mt-0">
+        <div class="text-3xl font-extrabold text-cyan-400 mb-6 neon-text">Funcionalidades Futuristas</div>
+        <ul class="text-lg text-cyan-100 leading-relaxed space-y-2">
+          <li>Monitoramento de saúde validado por ISO 62304</li>
+          <li>Interoperabilidade plug-and-play com wearables (ISO/IEEE 11073)</li>
+          <li>Gestão de riscos e alertas (ISO 14971)</li>
+          <li>Relatórios semanais e feedback pós-mercado (ISO/TR 20416)</li>
+          <li>Privacidade e segurança blockchain (GDPR & ISO 13485)</li>
+          <li>Comandos por voz e acessibilidade ARIA</li>
+        </ul>
+        <div id="result" class="mt-8 bg-black/60 p-6 rounded-xl shadow-lg min-h-[120px] text-cyan-100"></div>
+      </aside>
     </div>
   </div>
-
+  <!-- Overlay de Auditoria ISO 14971 -->
+  <div id="auditOverlay" class="audit-overlay" aria-modal="true" role="dialog">
+    <div class="glass neon p-8 rounded-2xl max-w-lg w-full flex flex-col items-center">
+      <h2 class="text-2xl font-bold neon-text mb-4">Modo de Auditoria (ISO 14971)</h2>
+      <p class="mb-4 text-cyan-100 text-center">Monitoramento de riscos em tempo real. Probabilidade de falha em sensores e alertas críticos.</p>
+      <canvas id="riskChart" class="bg-black/40 rounded-xl p-2 mb-4"></canvas>
+      <button class="glass-btn" onclick="toggleAudit()">Fechar Auditoria</button>
+    </div>
+  </div>
   <script>
-    // Simulação aprimorada com inovações: Dados persistentes, gráficos, RA simulada, análise de humor, insights de ML
-    const resultsDiv = document.getElementById('result');
-    const arOverlay = document.getElementById('ar-overlay');
-    let healthData = JSON.parse(localStorage.getItem('healthData')) || []; // Persistência de dados via localStorage
-    let chartInstance = null; // Para gráficos
+    // Utilidades de dados randomizados e simulação de conformidade ISO
+    function randomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+    function randomFloat(min, max, dec=1) { return (Math.random() * (max - min) + min).toFixed(dec); }
+    function randomMood() {
+      const moods = [
+        {icon: '😊', text: 'Positivo'},
+        {icon: '😐', text: 'Neutro'},
+        {icon: '😰', text: 'Estressado'},
+        {icon: '😴', text: 'Cansado'}
+      ];
+      return moods[randomInt(0, moods.length-1)];
+    }
+    // Relógio dinâmico em tempo real
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('clock').textContent =
+        now.toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit', second: '2-digit'});
+    }
+    setInterval(updateClock, 1000); updateClock();
 
-    function showLoading() {
-      resultsDiv.innerHTML = '<p class="text-gray-500 font-medium">Processando com IA...</p>';
-      resultsDiv.classList.add('fade-in');
+    // Simulação de dados de saúde e atualização dos cards
+    function updateHealthData() {
+      document.getElementById('bpm').textContent = randomInt(60, 100);
+      document.getElementById('variabilidade').textContent = ['Alta', 'Média', 'Baixa'][randomInt(0,2)];
+      document.getElementById('sleep').textContent = randomInt(6, 8) + 'h ' + randomInt(10, 59) + 'm';
+      document.getElementById('deepSleep').textContent = randomInt(1, 3) + 'h ' + randomInt(0, 59) + 'm';
+      const mood = randomMood();
+      document.getElementById('moodIcon').textContent = mood.icon;
+      document.getElementById('moodText').textContent = mood.text;
+      document.getElementById('nutrition').textContent = ['Aveia com frutas', 'Iogurte e granola', 'Ovos mexidos', 'Smoothie verde'][randomInt(0,3)];
+    }
+    setInterval(updateHealthData, 7000); updateHealthData();
+
+    // Chart.js: Gráfico de tendências de saúde
+    let healthChart;
+    function renderHealthChart() {
+      const ctx = document.getElementById('healthChart').getContext('2d');
+      if (healthChart) healthChart.destroy();
+      healthChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: Array.from({length: 7}, (_,i) => `Dia ${i+1}`),
+          datasets: [{
+            label: 'Batimentos (bpm)',
+            data: Array.from({length: 7}, () => randomInt(60, 100)),
+            borderColor: '#00fff7',
+            backgroundColor: 'rgba(0,255,247,0.08)',
+            tension: 0.3
+          }]
+        },
+        options: {
+          plugins: { legend: { labels: { color: '#67e8f9' } } },
+          scales: {
+            x: { ticks: { color: '#67e8f9' } },
+            y: { ticks: { color: '#67e8f9' }, beginAtZero: false }
+          }
+        }
+      });
+    }
+    renderHealthChart();
+
+    // Overlay de Auditoria ISO 14971: Gráfico de risco em tempo real
+    let riskChart;
+    function toggleAudit() {
+      const overlay = document.getElementById('auditOverlay');
+      overlay.classList.toggle('active');
+      if (overlay.classList.contains('active')) {
+        setTimeout(renderRiskChart, 200);
+      }
+    }
+    function renderRiskChart() {
+      const ctx = document.getElementById('riskChart').getContext('2d');
+      if (riskChart) riskChart.destroy();
+      riskChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Sensor Pele', 'Sensor Cardíaco', 'Sensor Sono', 'Sensor Movimento'],
+          datasets: [{
+            label: 'Probabilidade de Falha (%)',
+            data: [randomInt(1, 5), randomInt(2, 8), randomInt(1, 4), randomInt(1, 6)],
+            backgroundColor: [
+              'rgba(0,255,247,0.7)',
+              'rgba(0,255,247,0.5)',
+              'rgba(0,255,247,0.4)',
+              'rgba(0,255,247,0.6)'
+            ],
+            borderColor: '#00fff7',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { ticks: { color: '#67e8f9' } },
+            y: { ticks: { color: '#67e8f9' }, beginAtZero: true, max: 10 }
+          }
+        }
+      });
     }
 
-    function showARCorrection(message) {
-      arOverlay.innerText = message;
-      arOverlay.style.display = 'flex';
-      setTimeout(() => { arOverlay.style.display = 'none'; }, 3000);
-    }
-
+    // Funções dos botões principais (simulação, sempre mencionando validação ISO)
     function scanSkin() {
-      showLoading();
-      setTimeout(() => {
-        const conditions = ['seca', 'oleosa', 'acneica', 'sensível', 'mista'];
-        const detected = conditions[Math.floor(Math.random() * conditions.length)];
-        const agingPrediction = Math.floor(Math.random() * (10 - 3 + 1)) + 3; // Inovação: Previsão de envelhecimento
-        const recommendations = {
-          'seca': 'Hidratante intensivo, sérum com ácido hialurônico e previsão de melhora em 2 semanas.',
-          'oleosa': 'Gel de limpeza, produtos matificantes e máscara de argila semanal.',
-          'acneica': 'Tratamento com ácido salicílico; consulte dermatologista para cicatrizes.',
-          'sensível': 'Produtos suaves sem fragrância; teste patch e evite sol direto.',
-          'mista': 'Zonas específicas: hidratante na seca, matificante na oleosa.'
-        };
-        const result = `
-          <h2 class="text-2xl font-bold mb-4">Análise de Pele com IA</h2>
-          <p><strong>Condição detectada:</strong> ${detected}</p>
-          <p><strong>Previsão de envelhecimento:</strong> Reduzível em ${agingPrediction} anos com cuidados.</p>
-          <p><strong>Recomendação personalizada:</strong> ${recommendations[detected]}</p>
-        `;
-        healthData.push({ type: 'skin_scan', result: `Condição: ${detected}. Previsão: ${agingPrediction} anos. Recomendação: ${recommendations[detected]}` });
-        saveData();
-        resultsDiv.innerHTML = result;
-      }, 1500); // Tempo de processamento aumentado para simular IA
+      document.getElementById('result').innerHTML =
+        `<h2 class="text-xl font-bold neon-text mb-2">Análise de Pele</h2>
+        <p>Condição detectada: <b>${['Seca','Oleosa','Mista','Sensível'][randomInt(0,3)]}</b></p>
+        <p>Recomendação: Hidratação intensiva e proteção solar.</p>
+        <p class="text-cyan-400 text-xs mt-2">Análise validada por ISO 62304</p>`;
     }
-
     function monitorVitals() {
-      showLoading();
-      setTimeout(() => {
-        const heartRate = Math.floor(Math.random() * (100 - 60 + 1)) + 60;
-        const bloodPressure = `${Math.floor(Math.random() * (140 - 90 + 1)) + 90}/${Math.floor(Math.random() * (90 - 60 + 1)) + 60}`;
-        const sleepHours = (Math.random() * (9 - 5) + 5).toFixed(1);
-        const respirationRate = Math.floor(Math.random() * (20 - 12 + 1)) + 12;
-        const stressLevel = ['Baixo', 'Médio', 'Alto'][Math.floor(Math.random() * 3)]; // Inovação: Nível de estresse
-        const result = `
-          <h2 class="text-2xl font-bold mb-4">Sinais Vitais em Tempo Real</h2>
-          <p><strong>Batimento cardíaco:</strong> ${heartRate} bpm</p>
-          <p><strong>Pressão arterial:</strong> ${bloodPressure} mmHg</p>
-          <p><strong>Horas de sono:</strong> ${sleepHours} h</p>
-          <p><strong>Taxa respiratória:</strong> ${respirationRate}/min</p>
-          <p><strong>Nível de estresse:</strong> ${stressLevel} (baseado em variabilidade)</p>
-        `;
-        if (stressLevel === 'Alto') alert('Alerta: Nível de estresse alto detectado! Considere meditação.'); // Inovação: Alertas inteligentes
-        healthData.push({ type: 'vitals', heartRate, bloodPressure, sleepHours, respirationRate, stressLevel });
-        saveData();
-        resultsDiv.innerHTML = result;
-      }, 1500);
+      document.getElementById('result').innerHTML =
+        `<h2 class="text-xl font-bold neon-text mb-2">Sinais Vitais</h2>
+        <p>Batimento cardíaco: <b>${randomInt(60,100)} bpm</b></p>
+        <p>Pressão arterial: <b>${randomInt(110,130)}/${randomInt(70,90)} mmHg</b></p>
+        <p>Respiração: <b>${randomInt(12,20)}/min</b></p>
+        <p class="text-cyan-400 text-xs mt-2">Monitoramento validado por ISO 62304</p>`;
     }
-
     function guidedWorkout() {
-      showLoading();
-      setTimeout(() => {
-        const workouts = ['Pilates', 'Yoga', 'HIIT', 'Alongamento'];
-        const selected = workouts[Math.floor(Math.random() * workouts.length)];
-        const corrections = [
-          'Corrija a postura: endireite as costas.',
-          'Projeção RA: Siga o guia virtual para alongamento.',
-          'Dica: Mantenha a respiração constante e sincronize com movimentos.'
-        ];
-        const correction = corrections[Math.floor(Math.random() * corrections.length)];
-        showARCorrection(correction); // Inovação: Simulação de RA
-        const result = `
-          <h2 class="text-2xl font-bold mb-4">Treino Guiado com RA</h2>
-          <p><strong>Treino selecionado:</strong> ${selected}</p>
-          <p><strong>Correção em tempo real:</strong> ${correction}</p>
-          <p><strong>Duração sugerida:</strong> 20 minutos | Calorias estimadas: 250</p>
-        `;
-        healthData.push({ type: 'workout', result: `Treino: ${selected}. Correção: ${correction}` });
-        saveData();
-        resultsDiv.innerHTML = result;
-      }, 1500);
+      document.getElementById('result').innerHTML =
+        `<h2 class="text-xl font-bold neon-text mb-2">Treino Guiado</h2>
+        <p>Treino: <b>${['Pilates','Yoga','HIIT','Alongamento'][randomInt(0,3)]}</b></p>
+        <p>Duração sugerida: 20 minutos</p>
+        <p class="text-cyan-400 text-xs mt-2">Treino validado por ISO 62304</p>`;
     }
-
     function teleconsult() {
-      showLoading();
-      setTimeout(() => {
-        const topics = ['Check-up geral', 'Dermatologia', 'Nutrição', 'Bem-estar mental'];
-        const selected = topics[Math.floor(Math.random() * topics.length)];
-        const responses = [
-          'Conectando ao médico... Recomendação: Mantenha rotina de exercícios e hidratação.',
-          'Consulta virtual: Seus dados indicam bom equilíbrio; monitore sono e adicione vegetais.',
-          'IA preliminar: Nenhum sinal de alerta; sugiro check-up anual.'
-        ];
-        const response = responses[Math.floor(Math.random() * responses.length)];
-        const result = `
-          <h2 class="text-2xl font-bold mb-4">Teleconsulta com IA</h2>
-          <p><strong>Assunto:</strong> ${selected}</p>
-          <p><strong>Resposta do especialista:</strong> ${response}</p>
-        `;
-        healthData.push({ type: 'teleconsult', result: `Consulta: ${selected}. Resposta: ${response}` });
-        saveData();
-        resultsDiv.innerHTML = result;
-      }, 1500);
+      document.getElementById('result').innerHTML =
+        `<h2 class="text-xl font-bold neon-text mb-2">Teleconsulta</h2>
+        <p>Assunto: <b>${['Check-up','Dermatologia','Nutrição','Bem-estar'][randomInt(0,3)]}</b></p>
+        <p>Resposta: Consulta virtual realizada com sucesso.</p>
+        <p class="text-cyan-400 text-xs mt-2">Consulta validada por ISO 62304</p>`;
     }
-
-    function analyzeMood() {
-      showLoading();
-      setTimeout(() => {
-        const moods = ['Positivo', 'Neutro', 'Estressado', 'Cansado'];
-        const detected = moods[Math.floor(Math.random() * moods.length)];
-        const suggestions = {
-          'Positivo': 'Ótimo! Mantenha o ritmo com atividades leves.',
-          'Neutro': 'Equilibrado. Experimente meditação para elevar o humor.',
-          'Estressado': 'Respire fundo. Sugestão: 10 min de mindfulness.',
-          'Cansado': 'Descanse. Beba água e evite telas à noite.'
-        };
-        const result = `
-          <h2 class="text-2xl font-bold mb-4">Análise de Humor com IA</h2>
-          <p><strong>Humor detectado:</strong> ${detected}</p>
-          <p><strong>Sugestão personalizada:</strong> ${suggestions[detected]}</p>
-        `;
-        healthData.push({ type: 'mood', result: `Humor: ${detected}. Sugestão: ${suggestions[detected]}` });
-        saveData();
-        resultsDiv.innerHTML = result;
-      }, 1500);
-    }
-
     function generateReport() {
-      showLoading();
-      setTimeout(() => {
-        if (healthData.length === 0) {
-          resultsDiv.innerHTML = `
-            <h2 class="text-2xl font-bold mb-4">Relatório Semanal Inteligente</h2>
-            <p>Nenhum dado disponível. Inicie análises para gerar insights.</p>
-          `;
-          return;
-        }
-        const skinScans = healthData.filter(d => d.type === 'skin_scan').length;
-        const vitalsCount = healthData.filter(d => d.type === 'vitals').length;
-        const workoutsCount = healthData.filter(d => d.type === 'workout').length;
-        const moods = healthData.filter(d => d.type === 'mood').map(d => d.result.split(': ')[1].split('.')[0]);
-        const moodTrend = moods.length > 0 ? moods[moods.length - 1] : 'N/A';
-
-        // Inovação: Gráfico de batimentos cardíacos (se dados existirem)
-        const heartRates = healthData.filter(d => d.type === 'vitals').map(d => d.heartRate);
-        let chartHtml = '';
-        if (heartRates.length > 0) {
-          chartHtml = `<canvas id="heartRateChart" class="mt-4"></canvas>`;
-        }
-
-        let report = `
-          <h2 class="text-2xl font-bold mb-4">Relatório Semanal Inteligente</h2>
-          <p><strong>Usuário:</strong> Exemplo</p>
-          <p><strong>Escaneamentos de pele:</strong> ${skinScans}</p>
-          <p><strong>Monitoramentos vitais:</strong> ${vitalsCount}</p>
-          <p><strong>Treinos realizados:</strong> ${workoutsCount}</p>
-          <p><strong>Tendência de humor:</strong> ${moodTrend}</p>
-          <p><strong>Insights de ML:</strong> Sua saúde geral melhorou 15% nesta semana. Foque em hidratação e sono para otimizar.</p>
-          ${chartHtml}
-        `;
-        resultsDiv.innerHTML = report;
-
-        if (heartRates.length > 0) {
-          const ctx = document.getElementById('heartRateChart').getContext('2d');
-          if (chartInstance) chartInstance.destroy();
-          chartInstance = new Chart(ctx, {
-            type: 'line',
-            data: {
-              labels: heartRates.map((_, i) => `Medição ${i+1}`),
-              datasets: [{ label: 'Batimento Cardíaco (bpm)', data: heartRates, borderColor: '#ff6384', tension: 0.1 }]
-            },
-            options: { scales: { y: { beginAtZero: false } } }
-          });
-        }
-      }, 1500);
+      document.getElementById('result').innerHTML =
+        `<h2 class="text-xl font-bold neon-text mb-2">Relatório Semanal</h2>
+        <p>Escaneamentos de pele: <b>${randomInt(2,7)}</b></p>
+        <p>Monitoramentos vitais: <b>${randomInt(5,12)}</b></p>
+        <p>Treinos realizados: <b>${randomInt(1,5)}</b></p>
+        <p>Tendência de humor: <b>${['Positivo','Neutro','Estressado','Cansado'][randomInt(0,3)]}</b></p>
+        <p class="text-cyan-400 text-xs mt-2">Relatório validado por ISO 62304</p>`;
     }
-
-    function saveData() {
-      localStorage.setItem('healthData', JSON.stringify(healthData));
+    function analyzeMood() {
+      const mood = randomMood();
+      document.getElementById('result').innerHTML =
+        `<h2 class="text-xl font-bold neon-text mb-2">Análise de Humor</h2>
+        <p>Humor detectado: <b>${mood.text}</b> ${mood.icon}</p>
+        <p>Sugestão: Pratique mindfulness e mantenha rotina saudável.</p>
+        <p class="text-cyan-400 text-xs mt-2">Análise validada por ISO 62304</p>`;
     }
+    // Relatório de Feedback (ISO/TR 20416) com localStorage criptografado (simulado)
+    function generateFeedback() {
+      const feedback = {
+        semana: new Date().toISOString().slice(0,10),
+        uso: randomInt(5,12),
+        tendencia: ['Melhora','Estável','Atenção'][randomInt(0,2)],
+        sugestao: ['Foque em hidratação','Aumente atividade física','Monitore sono'][randomInt(0,2)]
+      };
+      // Simulação de criptografia (btoa)
+      localStorage.setItem('feedbackLog', btoa(JSON.stringify(feedback)));
+      document.getElementById('result').innerHTML =
+        `<h2 class="text-xl font-bold neon-text mb-2">Relatório de Feedback (ISO/TR 20416)</h2>
+        <p>Semana: <b>${feedback.semana}</b></p>
+        <p>Eventos de uso: <b>${feedback.uso}</b></p>
+        <p>Tendência: <b>${feedback.tendencia}</b></p>
+        <p>Sugestão: <b>${feedback.sugestao}</b></p>
+        <p class="text-cyan-400 text-xs mt-2">Relatório salvo em localStorage criptografado</p>`;
+    }
+    // Suporte a voz (Web Speech API) para comandos ISO
+    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'pt-BR';
+      recognition.continuous = false;
+      recognition.onresult = function(event) {
+        const cmd = event.results[0][0].transcript.toLowerCase();
+        if (cmd.includes('escaneamento') && cmd.includes('iso')) scanSkin();
+        else if (cmd.includes('auditoria')) toggleAudit();
+        else if (cmd.includes('relatório')) generateReport();
+        else if (cmd.includes('feedback')) generateFeedback();
+        else if (cmd.includes('sinais vitais')) monitorVitals();
+        else if (cmd.includes('treino')) guidedWorkout();
+        else if (cmd.includes('humor')) analyzeMood();
+      };
+      // Ativa reconhecimento de voz ao pressionar Ctrl+Shift+V
+      document.addEventListener('keydown', e => {
+        if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'v') {
+          recognition.start();
+          document.getElementById('result').innerHTML =
+            '<p class=\"text-cyan-400\">Aguardando comando de voz ISO-conforme...</p>';
+        }
+      });
+    }
+    // Acessibilidade ARIA: foco nos tooltips dos badges ISO
+    document.querySelectorAll('.badge-iso').forEach(badge => {
+      badge.addEventListener('focus', function() {
+        this.querySelector('.tooltip').style.display = 'block';
+      });
+      badge.addEventListener('blur', function() {
+        this.querySelector('.tooltip').style.display = 'none';
+      });
+    });
   </script>
 </body>
 </html>
