@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
-      background: linear-gradient(120deg, #67e8f9 0%, #06b6d4 100%);
+      background: linear-gradient(120deg, #67e8f9 0%, #8b5cf6 100%);
       min-height: 100vh;
     }
     .glass {
@@ -130,7 +130,7 @@
   </style>
 </head>
 <body class="font-sans antialiased text-cyan-100">
-  <div class="w-full min-h-screen flex items-center justify-center py-10 bg-gradient-to-br from-cyan-300 via-cyan-400 to-cyan-500 animate-pulse">
+  <div class="w-full min-h-screen flex items-center justify-center py-10 bg-gradient-to-br from-cyan-300 via-cyan-400 to-violet-500 animate-pulse">
     <div class="flex flex-col md:flex-row flex-col-md gap-12 items-start justify-center w-full max-w-7xl px-4">
       <!-- Painel principal -->
       <main class="glass neon relative w-full max-w-xl p-8 flex flex-col gap-6 shadow-2xl">
@@ -245,6 +245,13 @@
         </ul>
         <div id="result" class="mt-8 bg-black/60 p-6 rounded-xl shadow-lg min-h-[120px] text-cyan-100"></div>
       </aside>
+      <!-- Reconhecimento Facial com Câmera -->
+      <section class="glass neon mt-8 p-6 flex flex-col items-center w-full max-w-md mx-auto" style="min-height:220px;">
+        <h2 class="text-xl font-bold neon-text mb-4">Reconhecimento Facial</h2>
+        <video id="facecam" width="320" height="200" autoplay playsinline class="rounded-xl border-2 border-cyan-400 shadow-lg mb-3 bg-black/40"></video>
+        <button id="toggleCamBtn" class="glass-btn" type="button">Iniciar Câmera</button>
+        <div id="camStatus" class="text-cyan-300 text-sm mt-2"></div>
+      </section>
     </div>
   </div>
   <!-- Overlay de Auditoria ISO 14971 -->
@@ -257,6 +264,36 @@
     </div>
   </div>
   <script>
+    // Reconhecimento facial simples: ativação da câmera
+    let camStream = null;
+    const video = document.getElementById('facecam');
+    const btn = document.getElementById('toggleCamBtn');
+    const statusDiv = document.getElementById('camStatus');
+    let camActive = false;
+    async function startCam() {
+      try {
+        camStream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = camStream;
+        statusDiv.textContent = 'Câmera ativa. Olhe para a câmera para reconhecimento facial.';
+        btn.textContent = 'Parar Câmera';
+        camActive = true;
+      } catch (e) {
+        statusDiv.textContent = 'Permissão negada ou câmera não encontrada.';
+      }
+    }
+    function stopCam() {
+      if (camStream) {
+        camStream.getTracks().forEach(track => track.stop());
+        video.srcObject = null;
+      }
+      statusDiv.textContent = 'Câmera parada.';
+      btn.textContent = 'Iniciar Câmera';
+      camActive = false;
+    }
+    btn.addEventListener('click', () => {
+      if (!camActive) startCam();
+      else stopCam();
+    });
     // Utilidades de dados randomizados e simulação de conformidade ISO
     function randomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
     function randomFloat(min, max, dec=1) { return (Math.random() * (max - min) + min).toFixed(dec); }
