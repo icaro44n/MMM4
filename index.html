@@ -24,14 +24,14 @@
       background: none;
     }
     .neon-text {
-      color: #2563eb;
+      color: #111; /* Preto */
       text-shadow: none;
       font-weight: 700;
     }
     .badge-iso {
-      background: rgba(0,255,247,0.12);
-      border: 1px solid #00fff7;
-      color: #00fff7;
+      background: rgba(0,0,0,0.08); /* Preto suave */
+      border: 1px solid #111; /* Preto */
+      color: #111; /* Preto */
       border-radius: 0.5rem;
       padding: 0.2rem 0.7rem;
       font-size: 0.95rem;
@@ -56,7 +56,7 @@
       font-size: 0.9rem;
       white-space: nowrap;
       z-index: 10;
-      box-shadow: 0 2px 12px #00fff7aa;
+      box-shadow: 0 2px 12px #1118;
     }
     .audit-overlay {
       position: fixed;
@@ -73,13 +73,13 @@
       display: flex;
     }
     .blockchain-banner {
-      background: linear-gradient(90deg, #00fff7 0%, #232323 100%);
-      color: #232323;
+      background: linear-gradient(90deg, #111 0%, #232323 100%);
+      color: #fff;
       font-weight: 600;
       border-radius: 0.7rem;
       padding: 0.5rem 1.2rem;
       margin-bottom: 1rem;
-      box-shadow: 0 0 12px #00fff788;
+      box-shadow: 0 0 12px #1118;
       display: flex;
       align-items: center;
       gap: 0.7rem;
@@ -92,10 +92,10 @@
       justify-content: center;
       gap: 1rem;
       font-size: 0.95rem;
-      color: #67e8f9;
+      color: #111; /* Preto */
     }
     .glass-btn {
-      background: #2563eb;
+      background: #111;
       border: none;
       color: #fff;
       border-radius: 1.5rem;
@@ -104,22 +104,22 @@
       margin-top: 0.5rem;
       margin-bottom: 0.5rem;
       transition: background 0.2s, color 0.2s;
-      box-shadow: 0 2px 8px #2563eb22;
+      box-shadow: 0 2px 8px #1112;
     }
     .glass-btn:hover {
-      background: #1d4ed8;
+      background: #232323;
       color: #fff;
     }
     .iso-wearable {
-      background: rgba(0,255,247,0.08);
-      border: 1px solid #00fff7;
+      background: rgba(0,0,0,0.08); /* Preto suave */
+      border: 1px solid #111; /* Preto */
       border-radius: 1rem;
       padding: 0.7rem 1.2rem;
       margin-bottom: 1rem;
       display: flex;
       align-items: center;
       gap: 0.7rem;
-      color: #67e8f9;
+      color: #111; /* Preto */
       font-size: 1.1rem;
     }
     @media (max-width: 900px) {
@@ -147,63 +147,63 @@
           <!-- Cards de métricas com animação neon -->
           <div class="neon rounded-xl p-4 flex flex-col items-center" aria-label="Análise de Pele">
             <div class="font-semibold mb-1 neon-text">Análise de Pele</div>
-            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=facearea&w=256&h=256&facepad=2" alt="Skin" class="w-16 h-16 rounded-lg object-cover mb-2 ring-2 ring-cyan-400/40">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=facearea&w=256&h=256&facepad=2" alt="Skin" class="w-16 h-16 rounded-lg object-cover mb-2 ring-2 ring-black/40">
             <div class="text-xs w-full">
-              Secura <span class="float-right text-cyan-300">72%</span><br>
-              Pigmentação <span class="float-right text-cyan-300">59%</span><br>
-              Linhas Finas <span class="float-right text-cyan-300">65%</span><br>
-              Hidratação <span class="float-right text-cyan-200">85%</span>
+              Secura <span class="float-right text-black">72%</span><br>
+              Pigmentação <span class="float-right text-black">59%</span><br>
+              Linhas Finas <span class="float-right text-black">65%</span><br>
+              Hidratação <span class="float-right text-black">85%</span>
             </div>
-            <div class="text-[0.7rem] mt-2 text-cyan-400">Análise validada por ISO 62304</div>
+            <div class="text-[0.7rem] mt-2 text-black">Análise validada por ISO 62304</div>
           </div>
           <div class="neon rounded-xl p-4 flex flex-col items-center" aria-label="Postura e Movimento">
             <div class="font-semibold mb-1 neon-text">Postura</div>
             <div class="text-2xl mb-1 neon-text">🧍‍♂️</div>
-            <div class="text-cyan-300 font-semibold">Ótima</div>
-            <div class="text-xs text-cyan-200 mt-1">Passos: 8.500</div>
-            <div class="text-[0.7rem] mt-2 text-cyan-400">Monitoramento validado por ISO 62304</div>
+            <div class="text-black font-semibold">Ótima</div>
+            <div class="text-xs text-black mt-1">Passos: 8.500</div>
+            <div class="text-[0.7rem] mt-2 text-black">Monitoramento validado por ISO 62304</div>
           </div>
           <div class="neon rounded-xl p-4 flex flex-col items-center" aria-label="Batimento Cardíaco">
             <div class="font-semibold mb-1 neon-text">Batimento Cardíaco</div>
-            <div class="text-xl text-cyan-400 mb-1 neon-text">♥</div>
-            <div class="text-lg font-bold text-cyan-100"><span id="bpm">72</span> <span class="text-base font-normal text-cyan-300">bpm</span></div>
-            <div class="text-xs text-cyan-200">Variabilidade: <span id="variabilidade">Alta</span></div>
-            <div class="text-[0.7rem] mt-2 text-cyan-400">Monitoramento validado por ISO 62304</div>
+            <div class="text-xl text-black mb-1 neon-text">♥</div>
+            <div class="text-lg font-bold text-black"><span id="bpm">72</span> <span class="text-base font-normal text-black">bpm</span></div>
+            <div class="text-xs text-black">Variabilidade: <span id="variabilidade">Alta</span></div>
+            <div class="text-[0.7rem] mt-2 text-black">Monitoramento validado por ISO 62304</div>
           </div>
           <div class="neon rounded-xl p-4 flex flex-col items-center" aria-label="Sono e Recuperação">
             <div class="font-semibold mb-1 neon-text">Sono</div>
-            <div class="text-xl text-cyan-300 mb-1 neon-text">🌙</div>
-            <div class="text-lg font-bold text-cyan-100"><span id="sleep">7h 45m</span></div>
-            <div class="text-xs text-cyan-200">Profundo: <span id="deepSleep">2h 15m</span></div>
-            <div class="text-[0.7rem] mt-2 text-cyan-400">Monitoramento validado por ISO 62304</div>
+            <div class="text-xl text-black mb-1 neon-text">🌙</div>
+            <div class="text-lg font-bold text-black"><span id="sleep">7h 45m</span></div>
+            <div class="text-xs text-black">Profundo: <span id="deepSleep">2h 15m</span></div>
+            <div class="text-[0.7rem] mt-2 text-black">Monitoramento validado por ISO 62304</div>
           </div>
         </div>
         <div class="grid grid-cols-2 gap-4">
           <div class="neon rounded-xl p-4 flex flex-col items-center" aria-label="Humor e Bem-Estar">
             <div class="font-semibold mb-1 neon-text">Humor</div>
-            <div class="text-xl text-cyan-300 mb-1 neon-text" id="moodIcon">😊</div>
-            <div class="text-lg font-bold text-cyan-100" id="moodText">Positivo</div>
-            <div class="text-xs text-cyan-200">Baseado em análise facial</div>
-            <div class="text-[0.7rem] mt-2 text-cyan-400">Análise validada por ISO 62304</div>
+            <div class="text-xl text-black mb-1 neon-text" id="moodIcon">😊</div>
+            <div class="text-lg font-bold text-black" id="moodText">Positivo</div>
+            <div class="text-xs text-black">Baseado em análise facial</div>
+            <div class="text-[0.7rem] mt-2 text-black">Análise validada por ISO 62304</div>
           </div>
           <div class="neon rounded-xl p-4 flex flex-col items-center" aria-label="Nutrição Sugerida">
             <div class="font-semibold mb-1 neon-text">Nutrição</div>
-            <div class="text-xl text-cyan-300 mb-1 neon-text">🍎</div>
-            <div class="text-sm text-cyan-100" id="nutrition">Aveia com frutas</div>
-            <div class="text-xs text-cyan-200">Sugestão personalizada</div>
-            <div class="text-[0.7rem] mt-2 text-cyan-400">Sugestão validada por ISO 62304</div>
+            <div class="text-xl text-black mb-1 neon-text">🍎</div>
+            <div class="text-sm text-black" id="nutrition">Aveia com frutas</div>
+            <div class="text-xs text-black">Sugestão personalizada</div>
+            <div class="text-[0.7rem] mt-2 text-black">Sugestão validada por ISO 62304</div>
           </div>
         </div>
         <!-- Interoperabilidade com Wearables -->
         <div class="iso-wearable" aria-label="Interoperabilidade com Wearables">
-          <svg width="22" height="22" fill="none" stroke="#00fff7" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="3"/><path d="M7 7V5a5 5 0 0110 0v2"/></svg>
+          <svg width="22" height="22" fill="none" stroke="#111" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="3"/><path d="M7 7V5a5 5 0 0110 0v2"/></svg>
           <span>Wearable conectado via ISO/IEEE 11073</span>
           <span class="text-green-400 font-bold">●</span>
-          <span class="text-xs text-cyan-300">Smartwatch: 98 bpm | 7.2k passos</span>
+          <span class="text-xs text-black">Smartwatch: 98 bpm | 7.2k passos</span>
         </div>
         <!-- Botões interativos -->
         <div class="flex flex-wrap gap-2 mt-2">
-          <button class="glass-btn" onclick="scanSkin()" aria-label=\"Escanear Pele\">Escanear Pele</button>
+          <button class="glass-btn" onclick="scanSkin()" aria-label=\"Escanear Pele">Escanear Pele</button>
           <button class="glass-btn" onclick="monitorVitals()" aria-label=\"Monitorar Sinais Vitais">Monitorar Sinais Vitais</button>
           <button class="glass-btn" onclick="guidedWorkout()" aria-label=\"Iniciar Treino Guiado">Iniciar Treino Guiado</button>
           <button class="glass-btn" onclick="teleconsult()" aria-label=\"Teleconsulta">Teleconsulta</button>
@@ -235,8 +235,8 @@
       </main>
       <!-- Lado direito: funcionalidades e resultados -->
       <aside class="w-full max-w-md mt-8 md:mt-0">
-        <div class="text-3xl font-extrabold text-cyan-400 mb-6 neon-text">Funcionalidades Futuristas</div>
-        <ul class="text-lg text-cyan-100 leading-relaxed space-y-2">
+        <div class="text-3xl font-extrabold text-black mb-6 neon-text">Funcionalidades Futuristas</div>
+        <ul class="text-lg text-black leading-relaxed space-y-2">
           <li>Monitoramento de saúde validado por ISO 62304</li>
           <li>Interoperabilidade plug-and-play com wearables (ISO/IEEE 11073)</li>
           <li>Gestão de riscos e alertas (ISO 14971)</li>
@@ -244,14 +244,14 @@
           <li>Privacidade e segurança blockchain (GDPR & ISO 13485)</li>
           <li>Comandos por voz e acessibilidade ARIA</li>
         </ul>
-        <div id="result" class="mt-8 bg-black/60 p-6 rounded-xl shadow-lg min-h-[120px] text-cyan-100"></div>
+        <div id="result" class="mt-8 bg-black/60 p-6 rounded-xl shadow-lg min-h-[120px] text-black"></div>
       </aside>
       <!-- Reconhecimento Facial com Câmera -->
       <section class="glass neon mt-8 p-6 flex flex-col items-center w-full max-w-md mx-auto" style="min-height:220px;">
         <h2 class="text-xl font-bold neon-text mb-4">Reconhecimento Facial</h2>
-        <video id="facecam" width="320" height="200" autoplay playsinline class="rounded-xl border-2 border-cyan-400 shadow-lg mb-3 bg-black/40"></video>
+        <video id="facecam" width="320" height="200" autoplay playsinline class="rounded-xl border-2 border-black shadow-lg mb-3 bg-black/40"></video>
         <button id="toggleCamBtn" class="glass-btn" type="button">Iniciar Câmera</button>
-        <div id="camStatus" class="text-cyan-300 text-sm mt-2"></div>
+        <div id="camStatus" class="text-black text-sm mt-2"></div>
       </section>
     </div>
   </div>
@@ -259,7 +259,7 @@
   <div id="auditOverlay" class="audit-overlay" aria-modal="true" role="dialog">
     <div class="glass neon p-8 rounded-2xl max-w-lg w-full flex flex-col items-center">
       <h2 class="text-2xl font-bold neon-text mb-4">Modo de Auditoria (ISO 14971)</h2>
-      <p class="mb-4 text-cyan-100 text-center">Monitoramento de riscos em tempo real. Probabilidade de falha em sensores e alertas críticos.</p>
+      <p class="mb-4 text-black text-center">Monitoramento de riscos em tempo real. Probabilidade de falha em sensores e alertas críticos.</p>
       <canvas id="riskChart" class="bg-black/40 rounded-xl p-2 mb-4"></canvas>
       <button class="glass-btn" onclick="toggleAudit()">Fechar Auditoria</button>
     </div>
@@ -340,16 +340,16 @@
           datasets: [{
             label: 'Batimentos (bpm)',
             data: Array.from({length: 7}, () => randomInt(60, 100)),
-            borderColor: '#00fff7',
-            backgroundColor: 'rgba(0,255,247,0.08)',
+            borderColor: '#111', // preto
+            backgroundColor: 'rgba(0,0,0,0.08)', // preto suave
             tension: 0.3
           }]
         },
         options: {
-          plugins: { legend: { labels: { color: '#67e8f9' } } },
+          plugins: { legend: { labels: { color: '#111' } } },
           scales: {
-            x: { ticks: { color: '#67e8f9' } },
-            y: { ticks: { color: '#67e8f9' }, beginAtZero: false }
+            x: { ticks: { color: '#111' } },
+            y: { ticks: { color: '#111' }, beginAtZero: false }
           }
         }
       });
@@ -376,20 +376,20 @@
             label: 'Probabilidade de Falha (%)',
             data: [randomInt(1, 5), randomInt(2, 8), randomInt(1, 4), randomInt(1, 6)],
             backgroundColor: [
-              'rgba(0,255,247,0.7)',
-              'rgba(0,255,247,0.5)',
-              'rgba(0,255,247,0.4)',
-              'rgba(0,255,247,0.6)'
+              'rgba(0,0,0,0.7)',
+              'rgba(0,0,0,0.5)',
+              'rgba(0,0,0,0.4)',
+              'rgba(0,0,0,0.6)'
             ],
-            borderColor: '#00fff7',
+            borderColor: '#111',
             borderWidth: 1
           }]
         },
         options: {
           plugins: { legend: { display: false } },
           scales: {
-            x: { ticks: { color: '#67e8f9' } },
-            y: { ticks: { color: '#67e8f9' }, beginAtZero: true, max: 10 }
+            x: { ticks: { color: '#111' } },
+            y: { ticks: { color: '#111' }, beginAtZero: true, max: 10 }
           }
         }
       });
